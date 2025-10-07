@@ -36,7 +36,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         Home
       </a>
       <a
-        href="#About"
+        href="#about"
         className={`
                     text-2xl font-semibold text-white my-4 transform transition-transform duration-300
                     ${
@@ -50,7 +50,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         About
       </a>
       <a
-        href="#Projects"
+        href="#projects"
         className={`
                     text-2xl font-semibold text-white my-4 transform transition-transform duration-300
                     ${
@@ -64,7 +64,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         Project
       </a>
       <a
-        href="#Contact"
+        href="#contact"
         className={`
                     text-2xl font-semibold text-white my-4 transform transition-transform duration-300
                     ${
