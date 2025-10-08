@@ -1,50 +1,86 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { cn } from '../lib/utils';
+import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 
-export const NavBar = ({ menuOpen, setMenuOpen }) => {
+const navItems = [
+  { name: 'Home', href: '#hero' },
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+];
+
+export const NavBar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-  }, [menuOpen]);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-[rgba(10,10,10,0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <a href="#home" className="font-mono text-xl font-bold text-white">
-            kristian<span className="text-blue-500">.manaloto</span>
-          </a>
+    <nav
+      className={cn(
+        'fixed w-full z-40 transition-all duration-300',
+        isScrolled ? 'py-3 bg-background/80 backdrop-blur' : 'py-5'
+      )}
+    >
+      <div className="container flex items-center justify-between">
+        <a
+          href="#hero"
+          className="text-xl font-bold text-primary flex items-center text-primary"
+        >
+          <span className="relative z-10">
+            kristian<span className="text-glow text-foreground">.manaloto</span>
+          </span>
+        </a>
 
-          <div
-            className="w-7 h-5 relative cursor-pointer z-40 md:hidden"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            &#9776;
-          </div>
+        {/*Desktop nav bar */}
+        <div className="hidden md:flex space-x-8">
+          {navItems.map((item, key) => (
+            <a
+              key={key}
+              href={item.href}
+              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="#projects"
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              Project
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              Contact
-            </a>
+        {/*Mobile nav */}
+        <button
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          className="md:hidden p-2 text-foreground z-50"
+        >
+          {isMenuOpen ? (
+            <ExitIcon size={24} />
+          ) : (
+            <HamburgerMenuIcon size={24} />
+          )}
+        </button>
+
+        <div
+          className={cn(
+            'fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center',
+            'transition-all duration-300 md:hidden',
+            isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0'
+          )}
+        >
+          <div className="flex flex-col space-y-8 text-xl">
+            {navItems.map((item, key) => (
+              <a
+                key={key}
+                href={item.href}
+                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>

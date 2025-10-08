@@ -1,6 +1,6 @@
 import { RevealOnScroll } from '../RevealOnScroll';
 
-export const Projects = () => {
+export const Project = () => {
   return (
     <section
       id="projects"
@@ -22,6 +22,8 @@ export const Projects = () => {
     </section>
   );
 };
+
+export default Project;
 
 export const Card = () => {
   return (
