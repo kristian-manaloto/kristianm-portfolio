@@ -40,7 +40,7 @@ export const Main = () => {
 
             {/* Resume Download Button */}
             <a
-              href="KristianManaloto.pdf"
+              href="/kristianm-portfolio/KristianManaloto.pdf"
               download
               className="bg-primary/20 text-primary hover:bg-primary/30 py-2 px-6 rounded-md font-semibold transition-colors duration-300 card-hover flex items-center gap-2"
             >
