@@ -1,84 +1,129 @@
 import { RevealOnScroll } from '../RevealOnScroll';
 
+const skillCategories = [
+  {
+    name: 'web & frontend',
+    skills: ['React', 'JavaScript', 'Tailwind'],
+  },
+  {
+    name: 'backend & systems',
+    skills: [
+      'Node.js',
+      'Python',
+      'JavaScript',
+      'C',
+      'SQL',
+      'Docker',
+      'REST APIs',
+    ],
+  },
+  {
+    name: 'data & devOps tools',
+    skills: ['Power BI', 'Git', 'Plotly', 'NumPy', 'Pandas'],
+  },
+];
+
+const InfoCard = ({ title, items }) => (
+  <div className="p-6 rounded-xl border border-border card-hover bg-secondary">
+    <h3 className="text-xl font-bold mb-4 text-foreground">{title}</h3>
+    <ul className="list-none space-y-4 text-foreground/70">
+      {items.map((item, idx) => (
+        <li key={idx} className="space-y-1">
+          <div className="font-semibold">{item.title}</div>
+          {item.subtitle && (
+            <div className="italic text-foreground/60">{item.subtitle}</div>
+          )}
+          {item.details && (
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              {item.details.map((detail, i) => (
+                <li key={i}>{detail}</li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 export const About = () => {
-  const skills1 = ['React', 'Vue', 'Tailwind', 'JavaScript'];
-
-  const skills2 = ['Node.js', 'AWS', 'MongoDB', 'Python'];
-
   return (
     <section
       id="about"
       className="min-h-screen flex items-center justify-center py-20"
     >
       <RevealOnScroll>
-        <div className="max-w-3xl mx-auto px-4">
-          <h2
-            className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-700 
-        bg-clip-text text-transparent"
-          >
-            About Me
+        <div className="max-w-5xl mx-auto px-4">
+          {/* Section Title */}
+          <h2 className="text-3xl font-bold mb-8 text-glow text-center">
+            {'>'} about me
           </h2>
-          <div className="glass rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
-            <p className="text-gray-500 mb-6">
-              Passionate developer blah blah blah
+
+          {/* About Card */}
+          <div className="glass rounded-xl p-8">
+            <p className="text-foreground/70 mb-6">
+              a peek at the tools, knowledge, and experiences that define my
+              work.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4"> Frontend </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills1.map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
-                  hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4"> Backend </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills2.map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
-                  hover:shadow-[0_2px_8px_rgba(59,130,2246,0.2)] transition"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+            {/* Skills Grid */}
+            <div className="p-6 rounded-xl border border-border card-hover bg-secondary mb-6">
+              <h3 className="text-xl font-bold mb-4 text-foreground">
+                my tools
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {skillCategories.map((category, idx) => (
+                  <div key={idx}>
+                    <div className="text-xl font-bold mb-4 text-foreground/70">
+                      {category.name}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((tech, key) => (
+                        <span
+                          key={key}
+                          className="bg-primary/10 text-primary py-1 px-3 rounded-full text-sm card-hover"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-              <h3 className="text-xl font-bold mb-4"> Education </h3>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>
-                  <strong> B.S in Computer Science</strong> - University
-                  (2020-2025)
-                </li>
-                <li>Relevant Coursework: DSA, Networks, OS</li>
-              </ul>
-            </div>
+            {/* Education & Work */}
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+              {/* Education */}
+              <InfoCard
+                title="education"
+                items={[
+                  {
+                    title: 'B.S in Computer Science',
+                    subtitle: 'University of Saskatchewan (2020-2025)',
+                    details: [
+                      'Relevant Coursework: Operating Systems, Software Engineering, Computer Networks, AI',
+                    ],
+                  },
+                ]}
+              />
 
-            <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-              <h3 className="text-xl font-bold mb-4"> Work Experience </h3>
-              <div className="space-y-4 text-gray-300">
-                <div>
-                  <h4>Cook</h4>
-                  <p>Made Food</p>
-                </div>
-                <div>
-                  <h4>Cook</h4>
-                  <p>Made Food</p>
-                </div>
-              </div>
+              {/* Work Experience */}
+              <InfoCard
+                title="work experience"
+                items={[
+                  {
+                    title: 'Line Cook – Boston Pizza',
+                    subtitle: 'Sept 2021 – Present',
+                    details: [
+                      'Trained new staff on operational systems',
+                      'Maintained strong team communication under pressure',
+                    ],
+                  },
+                ]}
+              />
             </div>
           </div>
         </div>

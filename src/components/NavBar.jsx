@@ -3,9 +3,9 @@ import { cn } from '../lib/utils';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 const navItems = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'home', href: '#home' },
+  { name: 'about', href: '#about' },
+  { name: 'projects', href: '#projects' },
 ];
 
 export const NavBar = () => {

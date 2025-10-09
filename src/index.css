@@ -17,29 +17,34 @@ body {
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-card: var(--card);
+  --color-text-glow: var(--primary);
 }
 
 @layer base {
   :root {
-    --background: #f5f5f5;
-    --foreground: #111111;
+    /* Light Mode */
+    --background: #e3e8ef;
+    --foreground: #1f2937;
     --card: #ffffff;
-    --border: #e0e0e0;
-    --primary: #2563eb;
+    --border: #cfd8e3;
+    --primary: #3b82f6;
     --primary-foreground: #ffffff;
-    --secondary: #380d9e;
-    --secondary-foreground: #ffffff;
+    --secondary: #64748b;
+    --secondary-foreground: #1f2937;
   }
 
   .dark {
-    --background: #111111;
+    /* Dark Mode */
+    --background: #07090e;
     --foreground: #f5f5f5;
-    --card: #1e1e1e;
-    --border: #2c2c2c;
-    --primary: #3b82f6;
+    --card: #1e293b;
+    --border: #334155;
+    --primary: #1e40af;
     --primary-foreground: #ffffff;
-    --secondary: #1d0458; /* purple accent */
-    --secondary-foreground: #ffffff;
+    --secondary: #475569;
+    --secondary-foreground: #f5f5f5;
+
+    --color-text-glow: rgba(255, 255, 255, 0.6); /* light glow for dark mode */
   }
 
   * {
@@ -67,7 +72,7 @@ html {
   }
 
   .animate-loading-bar {
-    animation: loading 0.8s ease infinite;
+    animation: loading 1s ease infinite;
   }
 
   .animate-blink {
@@ -121,7 +126,7 @@ html {
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  text-shadow: 0 0 10px primary;
 }
 
 @utility card-hover {

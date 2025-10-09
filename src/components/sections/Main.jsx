@@ -1,3 +1,4 @@
+import { DownloadIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { RevealOnScroll } from '../RevealOnScroll';
 
 export const Main = () => {
@@ -8,19 +9,44 @@ export const Main = () => {
     >
       <RevealOnScroll>
         <div className="text-center z-10 px-4">
+          {/* Hero Title with gradient from primary → secondary */}
           <h1
-            className="
-                    text-2xl md:text-5xl font-bold mb-6 
-                    bg-gradient-to-r from-blue-600 to-violet-800 bg-clip-text  
-                    text-transparent leading-right"
+            className="text-2xl md:text-5xl font-bold mb-6 text-transparent"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--primary), var(--secondary))',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+            }}
           >
-            Hi, my name is Kristian
+            my name is kristian,
           </h1>
 
-          <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-            Computer Science B.S from USask
+          {/* Subtitle / Description */}
+          <p className="text-foreground/70 text-lg mb-8 max-w-lg mx-auto">
+            computer science graduate interested in systems, networks, and
+            building reliable software.
           </p>
-          <div className="flex justify-center space-x-4"></div>
+
+          {/* Buttons */}
+          <div className="flex justify-center space-x-4">
+            {/* Contact Me Button */}
+            <a
+              href="#contact"
+              className="bg-primary/20 text-primary hover:bg-primary/30 py-2 px-6 rounded-md font-semibold transition-colors duration-300 card-hover flex items-center gap-2"
+            >
+              get in touch <EnvelopeClosedIcon className="h-5 w-5" />
+            </a>
+
+            {/* Resume Download Button */}
+            <a
+              href="/Kristian_Manaloto_Resume.pdf"
+              download
+              className="bg-primary/20 text-primary hover:bg-primary/30 py-2 px-6 rounded-md font-semibold transition-colors duration-300 card-hover flex items-center gap-2"
+            >
+              my resume <DownloadIcon className="h-5 w-5" />
+            </a>
+          </div>
         </div>
       </RevealOnScroll>
     </section>
