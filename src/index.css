@@ -146,6 +146,12 @@ html {
           hover:scale-105 active:scale-95;
 }
 
+.center-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

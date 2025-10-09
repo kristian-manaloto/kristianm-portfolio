@@ -3,32 +3,34 @@ import { RevealOnScroll } from '../RevealOnScroll';
 
 export const projects = [
   {
-    title: 'LLM Reproducibility Analysis',
-    description:
-      'Researched how Large Language Models reproduce software issues across 150+ examples and analyzed key failure patterns.',
-    tech: ['Python', 'Data Analysis', 'Pandas', 'NumPy', 'Matplotlib'],
-    link: '#',
-  },
-  {
     title: 'RouteMetrics',
     description:
       'Built a GPS-based ride analysis tool to visualize paths, compute speed profiles, and detect rapid acceleration events.',
     tech: ['Python', 'Plotly', 'Data Visualization', 'NumPy', 'Pandas'],
-    link: '#',
+    link: 'https://github.com/kristian-manaloto/ride-logger',
   },
-  {
-    title: 'Restaurant Management System',
-    description:
-      'Led a 7-person team to develop a restaurant system with inventory, POS, and kitchen timing, backed by an SQL database.',
-    tech: ['Java', 'SQL', 'MVC', 'Object-Oriented Programming'],
-    link: '#',
-  },
+
   {
     title: 'Forum Posting Platform',
     description:
       'Created a full-stack messaging platform with real-time threads, secure REST APIs, and Docker-based deployment.',
     tech: ['JavaScript', 'React', 'Node.js', 'SQL', 'Docker'],
-    link: '#',
+    link: 'https://github.com/kristian-manaloto/uSpace',
+  },
+  {
+    title: 'LLM Reproducibility Analysis',
+    description:
+      'Researched how Large Language Models reproduce software issues across 150+ examples and analyzed key failure patterns.',
+    tech: ['Python', 'Data Analysis', 'Pandas', 'NumPy', 'Matplotlib'],
+    link: 'https://github.com/kristian-manaloto/llm-reproducability-study',
+  },
+
+  {
+    title: 'Restaurant Management System',
+    description:
+      'Led a 7-person team to develop a restaurant system with inventory, POS, and kitchen timing, backed by an SQL database.',
+    tech: ['Java', 'SQL', 'MVC', 'Object-Oriented Programming'],
+    link: 'https://github.com/kristian-manaloto/a-la-carte',
   },
 ];
 
@@ -59,13 +61,16 @@ export default Project;
 
 export const Card = ({ project }) => {
   return (
-    <div className="p-6 rounded-xl border border-border card-hover">
+    <div className="relative p-6 rounded-xl border border-border card-hover min-h-[200px]">
+      {/* Project Title */}
       <h3 className="text-xl font-bold mb-2 text-foreground">
         {project.title}
       </h3>
 
+      {/* Project Description */}
       <p className="text-foreground/70 mb-6">{project.description}</p>
 
+      {/* Tech Tags */}
       <div className="flex flex-wrap gap-2 mb-4">
         {project.tech.map((tech, key) => (
           <span
@@ -77,9 +82,12 @@ export const Card = ({ project }) => {
         ))}
       </div>
 
-      <div className="flex justify-start items-center pt-4">
+      {/* GitHub Icon*/}
+      <div className="absolute bottom-4 right-4">
         <a
           href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-primary hover:text-secondary transition-colors duration-300"
         >
           <GitHubLogoIcon className="text-2xl" />

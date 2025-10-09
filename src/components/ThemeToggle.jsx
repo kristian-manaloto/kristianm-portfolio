@@ -31,12 +31,10 @@ export const ThemeToggle = () => {
 
   return (
     <Switch.Root
-      ref={toggleRef}
       checked={isDarkMode}
       onCheckedChange={toggleTheme}
       className={cn(
-        'relative inline-flex h-8 w-16 items-center rounded-full bg-gray-300 dark:bg-gray-700 p-1 cursor-pointer transition-colors duration-300',
-        'fixed max-sm:hidden top-5 right-5 z-50'
+        'relative inline-flex h-8 w-16 items-center rounded-full bg-gray-300 dark:bg-gray-700 p-1 cursor-pointer transition-colors duration-300'
       )}
       aria-label="Toggle theme"
     >

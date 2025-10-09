@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { cn } from '../lib/utils';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
   { name: 'home', href: '#main' },
@@ -29,18 +30,16 @@ export const NavBar = () => {
         isScrolled ? 'py-3 bg-background/80 backdrop-blur' : 'py-5'
       )}
     >
-      <div className="container flex items-center justify-between">
-        <a
-          href="#main"
-          className="text-xl font-bold text-primary flex items-center text-primary"
-        >
-          <span className="relative z-10">
+      <div className="container mx-auto flex items-center justify-between text-primary">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <a href="#main" className="text-xl font-bold flex items-center">
             kristian<span className="text-glow text-foreground">.manaloto</span>
-          </span>
-        </a>
+          </a>
+        </div>
 
-        {/*Desktop nav bar */}
-        <div className="hidden md:flex space-x-8">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8">
           {navItems.map((item, key) => (
             <a
               key={key}
@@ -52,37 +51,19 @@ export const NavBar = () => {
           ))}
         </div>
 
-        {/*Mobile nav */}
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-        >
-          {isMenuOpen ? (
-            <ExitIcon size={24} />
-          ) : (
-            <HamburgerMenuIcon size={24} />
-          )}
-        </button>
-
-        <div
-          className={cn(
-            'fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center',
-            'transition-all duration-300 md:hidden',
-            isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0'
-          )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
-              <a
-                key={key}
-                href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+        {/* Theme Toggle + Mobile Menu */}
+        <div className="flex items-center space-x-4 flex-shrink-0">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="md:hidden p-2 text-foreground"
+          >
+            {isMenuOpen ? (
+              <ExitIcon size={24} />
+            ) : (
+              <HamburgerMenuIcon size={24} />
+            )}
+          </button>
         </div>
       </div>
     </nav>

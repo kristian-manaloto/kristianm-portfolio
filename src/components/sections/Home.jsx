@@ -14,7 +14,6 @@ export const Home = () => {
   return (
     <div className="scroll-smooth min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* ThemeToggle  */}
-      <ThemeToggle />
 
       {/* Loading overlay */}
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
