@@ -19,7 +19,7 @@ export const Main = () => {
               backgroundClip: 'text',
             }}
           >
-            my name is kristian,
+            my name is kristian
           </h1>
 
           {/* Subtitle / Description */}
@@ -40,7 +40,7 @@ export const Main = () => {
 
             {/* Resume Download Button */}
             <a
-              href="/Kristian_Manaloto_Resume.pdf"
+              href="/KristianManloto.pdf"
               download
               className="bg-primary/20 text-primary hover:bg-primary/30 py-2 px-6 rounded-md font-semibold transition-colors duration-300 card-hover flex items-center gap-2"
             >

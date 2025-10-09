@@ -3,9 +3,10 @@ import { cn } from '../lib/utils';
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 const navItems = [
-  { name: 'home', href: '#home' },
+  { name: 'home', href: '#main' },
   { name: 'about', href: '#about' },
   { name: 'projects', href: '#projects' },
+  { name: 'contact', href: '#contact' },
 ];
 
 export const NavBar = () => {
@@ -30,7 +31,7 @@ export const NavBar = () => {
     >
       <div className="container flex items-center justify-between">
         <a
-          href="#hero"
+          href="#main"
           className="text-xl font-bold text-primary flex items-center text-primary"
         >
           <span className="relative z-10">
