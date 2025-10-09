@@ -46,6 +46,10 @@ export const Project = () => {
             {'>'} projects
           </h2>
 
+          <p className="text-foreground/70 mb-6">
+            highlighted projects i’m proud of
+          </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <Card key={index} project={project} />

@@ -58,14 +58,12 @@ export const About = () => {
           <h2 className="text-3xl font-bold mb-8 text-glow text-center">
             {'>'} about me
           </h2>
+          <p className="text-foreground/70 mb-6">
+            an overview of my abilities, experiences, and projects.
+          </p>
 
           {/* About Card */}
-          <div className="glass rounded-xl p-8">
-            <p className="text-foreground/70 mb-6">
-              a peek at the tools, knowledge, and experiences that define my
-              work.
-            </p>
-
+          <div className="glass rounded-xl">
             {/* Skills Grid */}
             <div className="p-6 rounded-xl border border-border card-hover bg-secondary mb-6">
               <h3 className="text-xl font-bold mb-4 text-foreground">
